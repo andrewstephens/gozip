@@ -10,7 +10,7 @@ This project is a work in progress as I explore and implement the ZIP file forma
 
 🚧 **Work in Progress** 🚧
 
-This tool is in early development. Features and functionality are being added incrementally as I learn more about the ZIP specification.
+This tool is in early development. Features and functionality are being added incrementally as I learn more about the ZIP specification. It is absolutely not ready for production use unless you just want to read the contents of a zip file.
 
 ## Planned Features
 
