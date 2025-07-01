@@ -27,5 +27,6 @@ This tool is in early development. Features and functionality are being added in
 This project follows the ZIP file format specification:
 - [ZIP File Format Specification](https://pkware.cachefly.net/webdocs/casestudies/APPNOTE.TXT)
 - [Wikipedia: ZIP (file format)](https://en.wikipedia.org/wiki/ZIP_(file_format))
+- [PKZip Docs - jmu.edu](https://users.cs.jmu.edu/buchhofp/forensics/formats/pkzip.html)
 
 *This README will be (hopefully) updated as the project develops and new features are implemented.*
