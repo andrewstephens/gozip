@@ -7,7 +7,7 @@ import (
 
 func main() {
 	// open file
-	file, err := os.Open("Holding Out for a Hero.zip")
+	file, err := os.Open("example.zip")
 	if err != nil {
 		panic(err)
 	}
