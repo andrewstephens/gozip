@@ -13,7 +13,7 @@ This project is a work in progress as I explore and implement the ZIP file forma
 This tool is in early development. Features and functionality are being added incrementally as I learn more about the ZIP specification. It is absolutely not ready for production use unless you just want to read the contents of a zip file.
 
 ## Planned Features
-
+- [ ] Add CLI commands for ZIP operations
 - [x] Read ZIP file contents
 - [ ] Extract files from ZIP archives
 - [ ] Create new ZIP files
