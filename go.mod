@@ -1,3 +1,3 @@
-module GoZIp
+module GoZip
 
 go 1.23

@@ -1,7 +1,7 @@
 package main
 
 import (
-	"GoZIp/zip"
+	"GoZip/zip"
 	"os"
 )
 
