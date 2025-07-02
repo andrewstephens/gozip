@@ -16,7 +16,7 @@ This tool is in early development. Features and functionality are being added in
 - [ ] Add CLI commands for ZIP operations
 - [x] Read ZIP file contents
 - [ ] Extract files from ZIP archives
-- [ ] Create new ZIP files
+- [x] Create new ZIP files
 - [ ] Add files to existing ZIP archives
 - [ ] List archive contents
 - [ ] Support for compression methods
