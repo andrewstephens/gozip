@@ -7,12 +7,42 @@ import (
 
 func main() {
 	// open file
-	file, err := os.Open("example.zip")
+	//file, err := os.Open("example.zip")
+	//if err != nil {
+	//	panic(err)
+	//}
+	//
+	//defer file.Close()
+	//
+	//zip.ReadZip(file)
+
+	// Write to zip
+	file, err := os.Create("output.zip")
+	if err != nil {
+		panic(err)
+	}
+	defer file.Close()
+
+	// Create a zip writer
+	zw := zip.NewZipWriter(file)
+
+	// Add some files
+	err = zw.AddFile("hello.txt", []byte("Hello, World!"))
 	if err != nil {
 		panic(err)
 	}
 
-	defer file.Close()
+	err = zw.AddFile("readme.txt", []byte("This is a readme file."))
+	if err != nil {
+		panic(err)
+	}
 
-	zip.ReadZip(file)
+	// Close the zip writer
+	err = zw.Close()
+	if err != nil {
+		panic(err)
+	}
+
+	// Print success message
+	println("Zip file created successfully: output.zip")
 }

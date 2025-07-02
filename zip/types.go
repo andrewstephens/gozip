@@ -1,9 +1,10 @@
 package zip
 
 const (
-	EOCDMinSize               = 22
-	LocalFileHeaderSignature  = 0x04034b50
-	CentralDirectorySignature = 0x02014b50
+	EOCDMinSize                    = 22
+	LocalFileHeaderSignature       = 0x04034b50
+	CentralDirectorySignature      = 0x02014b50
+	EndOfCentralDirectorySignature = 0x06054b50
 )
 
 type LocalFileHeader struct {
