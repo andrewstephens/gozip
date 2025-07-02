@@ -2,9 +2,11 @@ package zip
 
 import (
 	"encoding/binary"
+	"errors"
 	"hash/crc32"
 	"io"
 	"time"
+	"unicode/utf8"
 )
 
 type ZipWriter struct {
@@ -40,6 +42,10 @@ func NewZipWriter(w io.Writer) *ZipWriter {
 	}
 }
 
+func isValidUTF8(s string) bool {
+	return utf8.ValidString(s)
+}
+
 func timeToMSDos(t time.Time) (uint16, uint16) {
 	year := t.Year() - 1980
 	if year < 0 {
@@ -51,6 +57,17 @@ func timeToMSDos(t time.Time) (uint16, uint16) {
 }
 
 func (zw *ZipWriter) AddFile(name string, data []byte) error {
+	// Do some validation
+	if name == "" {
+		return errors.New("zip filename is empty")
+	}
+	if len(name) > 65535 {
+		return errors.New("zip filename is too long (max 65535 bytes)")
+	}
+	if data == nil {
+		return errors.New("data cannot be nil")
+	}
+
 	// 1. Calculate CRC32
 	crc := crc32.ChecksumIEEE(data)
 
@@ -67,7 +84,13 @@ func (zw *ZipWriter) AddFile(name string, data []byte) error {
 	if err := binary.Write(zw.w, binary.LittleEndian, uint16(20)); err != nil { // version needed
 		return err
 	}
-	if err := binary.Write(zw.w, binary.LittleEndian, uint16(0x0800)); err != nil { // flags (UTF-8)
+
+	// TODO: Handle more flags eventually
+	flags := uint16(0)
+	if isValidUTF8(name) {
+		flags |= 0x0800 // UTF-8 flag
+	}
+	if err := binary.Write(zw.w, binary.LittleEndian, flags); err != nil { // flags (UTF-8)
 		return err
 	}
 	if err := binary.Write(zw.w, binary.LittleEndian, uint16(0)); err != nil { // compression method
